@@ -1,0 +1,85 @@
+.img-background {
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 60vh;
+}
+.form-background-color {
+  background-color: #e5e5e5;
+  height: auto;
+}
+.form-card {
+  width: 850px;
+  height: auto;
+  border: 1px solid transparent;
+  background: white;
+  border-radius: 2px;
+  position: relative;
+  top: -70px;
+  left: auto;
+  right: auto;
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.form-div-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.input-label-input-divs {
+  width: 460px;
+}
+.div-btn-btn {
+  width: 460px;
+}
+@media (max-width: 1420px) {
+  .input-label-input-divs {
+    width: 360px;
+  }
+  .div-btn-btn {
+    width: auto;
+  }
+}
+@media (max-width: 1400px) {
+  .form-card {
+    width: auto;
+    border: 2px solid whitesmoke;
+    box-shadow: rgb(65, 221, 221);
+    height: auto;
+  }
+  .input-label-input-divs {
+    width: 370px;
+  }
+}
+@media (max-width: 1200px) {
+  .input-label-input-divs {
+    width: 350px;
+  }
+}
+@media (max-width: 980px) {
+  .input-label-input-divs {
+    width: 360px;
+  }
+}
+
+@media (max-width: 770px) {
+  .input-label-input-divs {
+    width: inherit;
+  }
+}
+@media (max-width: 760px) {
+  .input-label-input-divs {
+    width: 400px;
+  }
+}
+@media (max-width: 480px) {
+  .input-label-input-divs {
+    width: 210px;
+  }
+}

@@ -1,0 +1,16 @@
+.categoryButtons {
+  background: initial;
+  color: red;
+  border: 1px solid rgb(8, 8, 8);
+}
+.categoryButton span {
+  margin-right: 10px;
+}
+@media screen and (max-width: 480px) {
+  .cate {
+    display: none;
+  }
+  /* .categoryButton {
+    display: none;
+  } */
+}
