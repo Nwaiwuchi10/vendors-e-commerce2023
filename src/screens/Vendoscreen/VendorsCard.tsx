@@ -17,69 +17,44 @@ type Props = {
   price?: any;
   Avaliability?: any;
   productItem?: any;
+  handleAddToCart: (event: React.MouseEvent<HTMLButtonElement>) => void;
 
-  // onAddToCart?: () => void;
   onAddToCart?: any;
 };
-const SampleNextArrow = (props: Props) => {
-  const { onClick } = props;
-  return (
-    <div className="control-btn" onClick={onClick}>
-      <button className="next">
-        <i className="fa fa-long-arrow-alt-right"></i>
-      </button>
-    </div>
-  );
-};
-const SamplePrevArrow = (props: Props) => {
-  const { onClick } = props;
-  return (
-    <div className="control-btn" onClick={onClick}>
-      <button className="prev">
-        <i className="fa fa-long-arrow-alt-left"></i>
-      </button>
-    </div>
-  );
-};
+
 const VendorsCard: React.FC<Props> = ({
   cover,
   price,
   name,
   Avaliability,
   onAddToCart,
-
+  handleAddToCart,
   productItem,
 }) => {
   const navigate = useNavigate();
-  const handleAddToCart = (productItem: any) => {
-    onAddToCart(productItem);
+  // const handleAddToCart = () => {
+  //   try {
+  //     onAddToCart(productItem);
+  //     const items = productItem.toString();
+  //     console.log(items);
+  //     localStorage.setItem("cartItemsDis", JSON.stringify(items));
+  //     // localStorage.setItem("cartItems", JSON.stringify(items));
 
-    // localStorage.setItem("cartPriceRanger", productItem.priceRange);
-    // localStorage.setItem("cartContactNumber", productItem.contactNumber);
-    // localStorage.setItem("cartVendorId", productItem._id);
-    // localStorage.setItem("cartEmail", productItem.email);
+  //     // navigate("/cart");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
 
-    // localStorage.setItem("cartCategory", productItem.category);
-    // localStorage.setItem("CartSocialMedia", productItem.socialMediaHandles);
+  // };
+  // const handleAddToCart = (productItem:any) => {
 
-    // localStorage.setItem("cartBrandName", productItem.brandName);
-    // localStorage.setItem(
-    //   "cartImagProductShowCase",
-    //   productItem.imageProductShowCase
-    // );
-    // localStorage.setItem("cartBrandDescription", productItem.brandDescription);
+  //   onAddToCart(productItem);
+  //   const items = productItem.toString();
+  //   console.log(items);
+  //   localStorage.setItem("cartItemsDis", JSON.stringify(items));
 
-    navigate("/cart");
-  };
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
-  };
+  // };
+
   return (
     <>
       {/* <Slider {...settings} className="slider-settings"> */}
@@ -110,7 +85,7 @@ const VendorsCard: React.FC<Props> = ({
                 to={`/vendorsDetails/${productItem._id}`}
                 style={{ color: "initial" }}
               >
-                {name}
+                {productItem.brandName}
               </Link>{" "}
             </h3>
             <div className="rate">
@@ -122,12 +97,16 @@ const VendorsCard: React.FC<Props> = ({
             </div>
             <div className="price">
               <h4>&#8358;{price} </h4>
+
               {/* step : 3  
                      if hami le button ma click garryo bahne 
                     */}
               <button onClick={handleAddToCart}>
                 <i className="fa fa-plus"></i>
               </button>
+            </div>
+            <div className="price">
+              <h6>Negotiable</h6>
             </div>
           </div>
         </div>

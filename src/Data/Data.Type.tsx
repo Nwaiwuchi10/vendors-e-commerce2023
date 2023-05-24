@@ -28,6 +28,13 @@ export interface EvenTAddress {
   eventTime: String;
   eventDuration: String;
 }
+export interface OrderItem {
+  brandName: string;
+  priceAgreed: number;
+  image: string;
+  product: string;
+  // Add other fields if needed
+}
 // export const dummyEmployeList: IEmployee[] = [
 //   {
 //     id: new Date().toJSON().toString(),

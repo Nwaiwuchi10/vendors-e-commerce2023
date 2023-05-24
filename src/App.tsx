@@ -13,6 +13,9 @@ import CartScreen from "./screens/CartScreen/CartScreen";
 import VendorImageClips from "./screens/VendorsAppliForm/VendorImageClips";
 import EventAddress from "./screens/BookingScreen/EventAddress";
 import UserRegister from "./screens/UserRegisterScreen/UserRegister";
+import OrderScreen from "./screens/OrderScreen/OrderScreen";
+import TopNavbar from "./components/Header/TopNavbar";
+import PaymentCheckOut from "./screens/PaymentScreen/PaymentCheckOut";
 function App() {
   const [cartItems, setCartItems] = useState([] as any);
 
@@ -29,6 +32,7 @@ function App() {
   // }
   return (
     <div>
+      <TopNavbar cartItems={cartItems} />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/productCreate" element={<UserProfile />} />
@@ -52,6 +56,12 @@ function App() {
           path="/booking"
           element={<EventAddress step1 step2 cartItems={cartItems} />}
         />
+        <Route
+          path="/order"
+          element={<OrderScreen step3 cartItems={cartItems} />}
+        />
+        <Route path="/payment" element={<PaymentCheckOut step4 />} />
+        <Route path="/vendorsclips/:id" element={<VendorImageClips />} />
       </Routes>
     </div>
   );

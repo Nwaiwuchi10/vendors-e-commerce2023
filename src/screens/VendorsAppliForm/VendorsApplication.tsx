@@ -76,6 +76,10 @@ const VendorsApplication: React.FC<Props> = () => {
   //////
 
   /////
+  const handlePostNavigation = (id: string) => {
+    // Navigate to the specified ID
+    navigate(`/vendorsclips/${id}`);
+  };
   const submitHandler = (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -137,7 +141,7 @@ const VendorsApplication: React.FC<Props> = () => {
           localStorage.setItem("brandDescription", res.data.brandDescription);
           console.log(res.data);
           toast.success("post sucessful");
-          navigate("/");
+          handlePostNavigation(res.data._id);
         } else {
           toast.error(res.data.error);
         }

@@ -16,6 +16,7 @@ type Props = {
   addToCart?: () => void;
   onAddToCarts?: (item: String) => void;
   handleAddToCart?: any;
+  onAddToCart?: any;
   // addToCart?: any[];
 };
 const SampleNextArrow = (props: Props) => {
@@ -38,7 +39,20 @@ const SamplePrevArrow = (props: Props) => {
     </div>
   );
 };
-const VendorsScreen: React.FC<Props> = ({ onAddToCarts, handleAddToCart }) => {
+const VendorsScreen: React.FC<Props> = ({ onAddToCarts, onAddToCart }) => {
+  const handleCartAdd = () => {
+    try {
+      onAddToCart(data);
+
+      console.log(data);
+      localStorage.setItem("cartItemsDis", JSON.stringify(data));
+      // localStorage.setItem("cartItems", JSON.stringify(items));
+
+      // navigate("/cart");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const navigate = useNavigate();
   const settings = {
     dots: false,
@@ -60,7 +74,7 @@ const VendorsScreen: React.FC<Props> = ({ onAddToCarts, handleAddToCart }) => {
       setLoading(false);
       setError(false);
 
-      localStorage.setItem("Vendors", JSON.stringify(data));
+      // localStorage.setItem("Vendors", JSON.stringify(data));
     };
 
     fetchPosts();
@@ -91,6 +105,7 @@ const VendorsScreen: React.FC<Props> = ({ onAddToCarts, handleAddToCart }) => {
                   return (
                     <div className="box" key={index}>
                       <VendorsCard
+                        handleAddToCart={handleCartAdd}
                         onAddToCart={onAddToCarts}
                         cover={productItems?.imageProductShowCase}
                         name={productItems?.brandName}

@@ -73,6 +73,9 @@ const VendorsDetails: React.FC<Props> = ({
     // navigate(`/cart/${vendor._id}`);
     // localStorage.setItem("items", JSON.stringify(items));
   };
+  const handleCallButtonClick = () => {
+    window.location.href = `tel:${vendor.contactNumber}`;
+  };
   return (
     <>
       <Header cartItems={cartItems} />
@@ -204,9 +207,13 @@ const VendorsDetails: React.FC<Props> = ({
                     >
                       Add to Cart <i className="fas fa-shopping-cart"></i>
                     </button>
-                    {/* <button type="button" className="btn">
-                      Compare
-                    </button> */}
+                    <button
+                      type="button"
+                      className="btn"
+                      onClick={handleCallButtonClick}
+                    >
+                      <i className="fa fa-phone"></i> Call Vendor
+                    </button>
                   </div>
                 </div>
               </div>

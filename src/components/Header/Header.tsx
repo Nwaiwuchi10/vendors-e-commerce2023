@@ -10,7 +10,7 @@ const Header = (props: Props) => {
   const { cartItems } = props;
   return (
     <div>
-      <TopNavbar cartItems={cartItems} />
+      {/* <TopNavbar cartItems={cartItems} /> */}
 
       <div>
         <Navbar />

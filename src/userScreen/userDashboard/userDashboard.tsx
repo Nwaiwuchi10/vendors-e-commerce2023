@@ -19,33 +19,10 @@ import "./userDashBoard.css";
 // import union from "../../assets/images/Union.png";
 // import lends from "../../assets/images/lendsqr.png";
 import { BiSearch } from "react-icons/bi";
-import { FiBell, FiUserCheck, FiUserPlus, FiUsers } from "react-icons/fi";
-import {
-  MdOutlineArrowDropDown,
-  MdAdminPanelSettings,
-  MdMiscellaneousServices,
-  MdOutlineCleanHands,
-  MdOutlineSupervisorAccount,
-  MdHouseboat,
-  MdOutlineRoomPreferences,
-  MdOutlineProductionQuantityLimits,
-  MdAccountCircle,
-} from "react-icons/md";
-import { BsHouseAdd } from "react-icons/bs";
-// import face from "../../assets/images/image 4 (1).png";
-import {
-  AiOutlineMoneyCollect,
-  AiOutlineRadarChart,
-  AiOutlineTranslation,
-  AiOutlineUserSwitch,
-} from "react-icons/ai";
-import { FaRegHandshake } from "react-icons/fa";
-import { VscFeedback } from "react-icons/vsc";
-import { HiOutlineDocumentReport } from "react-icons/hi";
-import { RiCalendarTodoLine, RiUserSettingsLine } from "react-icons/ri";
-import { IoMdHelpBuoy } from "react-icons/io";
-import { SlOrganization } from "react-icons/sl";
-import TopNavbar from "../../components/Header/TopNavbar";
+import { FiBell } from "react-icons/fi";
+import { MdOutlineArrowDropDown, MdAccountCircle } from "react-icons/md";
+
+import Sidebar from "./Sidebar";
 // import SideBsr from "./SideBsr";
 const drawerWidth = 240;
 
@@ -111,8 +88,15 @@ export default function UserDashBoard(props: Props) {
   const drawer = (
     <div>
       <Toolbars />
+      <div>
+        {localStorage.getItem("firstName")}
+        {localStorage.getItem("lastName")}{" "}
+      </div>
       <Divider />
-      <List style={{ color: "#213F7D" }}>{/* <SideBsr /> */}</List>
+      <List style={{ color: "#213F7D" }}>
+        {" "}
+        <Sidebar />{" "}
+      </List>
       <Divider />
       <List></List>
     </div>

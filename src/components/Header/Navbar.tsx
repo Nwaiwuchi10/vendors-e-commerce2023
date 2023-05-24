@@ -117,7 +117,7 @@ export default function Navbar(props: Props) {
           </IconButton>
           <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
             <Typography variant="h6" component="div" className="now-music-sm">
-              EVENT VENDORS
+              VENDORS
             </Typography>
           </Link>
           <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
@@ -129,7 +129,7 @@ export default function Navbar(props: Props) {
                 display: { xs: "none", sm: "block" },
               }}
             >
-              EVENT VENDORS
+              VENDORS
             </Typography>
           </Link>
           <div className="category-nav">

@@ -60,9 +60,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function TopNavbar(props: Props) {
+export default function TopNavbar({ cartItems }: Props) {
   const navigate = useNavigate();
-  const { cartItems } = props;
+
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
@@ -76,6 +76,18 @@ export default function TopNavbar(props: Props) {
   const addNavigate = () => {
     navigate("/cart");
   };
+
+  const [cartItem, setCartItem] = React.useState<any[]>([]);
+
+  React.useEffect(() => {
+    // Retrieve cart items from localStorage on component mount
+    const storedCartItems = localStorage.getItem("cartItems");
+    if (storedCartItems) {
+      setCartItem(JSON.parse(storedCartItems));
+    }
+  }, []);
+
+  // Fetch cart items from localStorage on component mount
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -130,8 +142,13 @@ export default function TopNavbar(props: Props) {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={cartItems.length} color="error">
+        <IconButton
+          size="large"
+          aria-label="show 4 new mails"
+          color="inherit"
+          onClick={addNavigate}
+        >
+          <Badge badgeContent={cartItem.length} color="error">
             <BsCart4 />
           </Badge>
         </IconButton>
@@ -192,6 +209,7 @@ export default function TopNavbar(props: Props) {
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
+              onClick={addNavigate}
             >
               <Badge badgeContent={cartItems.length} color="error">
                 <BsCart4 />

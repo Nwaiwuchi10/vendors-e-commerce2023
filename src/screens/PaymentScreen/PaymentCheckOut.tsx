@@ -1,72 +1,55 @@
-import {
-  Button,
-  Checkbox,
-  FormControlLabel,
-  FormGroup,
-  TextField,
-} from "@mui/material";
-import React, { useState, ChangeEvent } from "react";
-import "./style.css";
-
+import UserDashBoard from "../../userScreen/userDashboard/userDashboard";
+import Checkoutsteps from "../../components/Checkout/Checkoutsteps";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { TextField } from "@mui/material";
+import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
+import { EvenTAddress, OrderItem } from "../../Data/Data.Type";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
+import { PaymentApi } from "../../Data/Api";
 import vend from "../../assets/Images/vend.jpg";
 import CircularIndeterminate from "../../components/Loading/Progress";
 type Props = {
-  // base64: (file: File | null) => void;
+  step4: any;
 };
-const VendorImageClips: React.FC<Props> = () => {
+const PaymentCheckOut: React.FC<Props> = () => {
   const navigate = useNavigate();
 
-  const [vendorId, setVendorId] = useState(
-    localStorage.getItem("vendorId") as any
-  );
-
-  const [images, setImages] = useState([] as any);
-
+  const [transactionReceipt, setTransactionReceipt] = useState("");
+  const [user, setUser] = useState(localStorage.getItem("userId"));
+  const [order, setOrder] = useState(localStorage.getItem("orderId"));
   const [loading, setLoading] = useState(false);
   const handleLoader = () => {
     setLoading(true);
 
     // Perform any other actions that need to be done when the button is clicked
   };
-  const handleFileInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleFileInputChange = (e: any) => {
     const file = e.target.files && e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImages(reader.result as any);
+        setTransactionReceipt(reader.result as any);
       };
       reader.readAsDataURL(file);
     }
   };
 
-  const convert2base64 = (file: any) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
-  //////music file
-
   //////
 
   /////
+
   const submitHandler = (e: any) => {
     e.preventDefault();
     setLoading(true);
-    const data = {
-      vendorId: vendorId,
-      images: images,
+    const data: any = {
+      user: user,
+
+      order: order,
+      transactionReceipt: transactionReceipt,
     };
 
     const headers: any = {
@@ -77,28 +60,21 @@ const VendorImageClips: React.FC<Props> = () => {
     };
 
     axios
-      .post(
-        `http://localhost:5000/api/vendors/updateimages/${localStorage.getItem(
-          "vendorId"
-        )}`,
-        data,
-        headers
-      )
+      .post(PaymentApi, data, headers)
 
       .then((res) => {
         console.log(res.data);
         setLoading(false);
         if (res.data) {
-          setVendorId("");
+          setOrder("");
+          setUser("");
+          setTransactionReceipt("");
 
-          setImages("");
-
-          localStorage.setItem("vendorId", res.data._id);
-          localStorage.setItem("images", res.data.images);
+          localStorage.setItem("payment", res.data._id);
 
           console.log(res.data);
           toast.success("post sucessful");
-          navigate("/");
+          navigate("/userDashboard");
         } else {
           toast.error(res.data.error);
         }
@@ -111,7 +87,8 @@ const VendorImageClips: React.FC<Props> = () => {
       });
   };
   return (
-    <div>
+    <UserDashBoard>
+      <Checkoutsteps step4 />
       <div>
         <div
           className="img-background"
@@ -123,23 +100,27 @@ const VendorImageClips: React.FC<Props> = () => {
           <div className="form-card">
             <div className=" card-body p-4 p-md-5">
               <h3 className="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 d-flex justify-content-center">
-                Create a Vendor
+                Upload Transaction Receipt
               </h3>
               <p
                 className="d-flex justify-content-center"
-                style={{ marginLeft: "15px", color: "red" }}
+                style={{ marginLeft: "15px" }}
               >
-                *pls all the blanck inputs are been required*
+                *pls note that an evidence of your transaction will be sent to
+                the vendor and admin before confirmation*
               </p>
               <form onSubmit={submitHandler}>
                 <div className="form-div-input">
                   <div className="col mb-4">
-                    {/* <label className="">Cover Photo</label> */}
+                    <label className="">
+                      Evidence of Payment/Transaction Receipt
+                    </label>
                     <TextField
                       className="input-label-input-divs"
                       required
                       id="outlined-required"
                       type="file"
+                      // accept="image/png image/jpeg image/jpg"
                       onChange={handleFileInputChange}
                     />
                   </div>
@@ -153,12 +134,13 @@ const VendorImageClips: React.FC<Props> = () => {
                       // onClick={handleLoader}
                     >
                       <Button
-                        className="div-btn-btn"
+                        // className="div-btn-btn"
+                        className="btn-block"
                         onSubmit={handleLoader}
                         type="submit"
                         variant="contained"
                       >
-                        Upload
+                        Upload Your Transaction Receipt
                       </Button>
                       <ToastContainer />
                     </div>
@@ -169,8 +151,8 @@ const VendorImageClips: React.FC<Props> = () => {
           </div>
         </div>
       </div>
-    </div>
+    </UserDashBoard>
   );
 };
 
-export default VendorImageClips;
+export default PaymentCheckOut;

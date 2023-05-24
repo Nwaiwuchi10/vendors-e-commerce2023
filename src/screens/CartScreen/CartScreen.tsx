@@ -1,46 +1,38 @@
 import React, { useEffect, useState } from "react";
-import {
-  Button,
-  Card,
-  Col,
-  Container,
-  Image,
-  ListGroup,
-  Row,
-} from "react-bootstrap";
+import { Button } from "@mui/material";
+import { Card, Col, Container, Image, ListGroup, Row } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import Message from "../../components/Messages/Message";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import { AnyMxRecord } from "dns";
+import "./Style.css";
 type Props = {
   change?: any[];
   cartItems?: any;
+  savedCartItems?: any;
 };
 const CartScreen: React.FC<Props> = ({ cartItems }) => {
-  const [cart, setCart] = useState({});
+  const [cart, setCart] = useState({} as any);
 
   // Fetch cart items from localStorage on component mount
   useEffect(() => {
     const savedCartItems = localStorage.getItem("cartItems");
     if (savedCartItems) {
       setCart(JSON.parse(savedCartItems));
+      console.log(savedCartItems);
     }
   }, []);
-  const [change, setChange] = useState([] as any);
+
   const navigate = useNavigate();
-  //   const VendorId: any = localStorage.gtItem("cartVendorId");
-  const item: any = localStorage.getItem("cartImagProductShowCase");
-  //   setChange(item);
-  const brad: any = localStorage.getItem("cartBrandName");
-  const prices: any = localStorage.getItem("cartPriceRange");
+
+  // const prices: any = localStorage.getItem("cartPriceRange");
   const removeFromCartHandler = () => {
     try {
-      localStorage.removeItem("cartImagProductShowCase");
-      localStorage.removeItem("cartBrandName");
-      localStorage.removeItem("cartPriceRange");
-      setChange([]);
+      localStorage.removeItem("cartItems");
+
+      setCart([]);
     } catch (error) {
       console.log(error);
     }
@@ -49,80 +41,88 @@ const CartScreen: React.FC<Props> = ({ cartItems }) => {
     navigate("/booking");
   };
   return (
-    <div>
+    <>
       <Header cartItems={cartItems} />
       <Container>
-        <Row style={{ width: "100%" }}>
-          <Link className="btn btn-light my-3" to="/homescreen">
-            Go Back
-          </Link>
+        <Link className="btn btn-light my-3" to="/">
+          Go Back
+        </Link>
+        {cart.lenght === 0 ? (
+          <Message variant="danger">Your cart is empty</Message>
+        ) : (
+          <section
+            className="h-100"
+            style={{ backgroundColor: "#eee", marginBottom: "70px" }}
+          >
+            <div className="container h-100 py-5">
+              <div className="row d-flex justify-content-center align-items-center h-100">
+                <div className="col-10">
+                  <div className="d-flex justify-content-between align-items-center mb-4">
+                    <h3 className="fw-normal mb-0 text-black">Booking Cart</h3>
+                  </div>
+                  <div className="cartCard">
+                    {/* <div className="cartScreendisp"> */}
+                    <div className="div-cart-img">
+                      <img
+                        src={cart.imageProductShowCase}
+                        alt="jeir"
+                        className="cartimage"
+                      />
+                    </div>
+                    <div>
+                      <div>
+                        <strong>{cart.brandName}</strong>{" "}
+                      </div>
+                      <div>
+                        <strong>{cart.category}</strong>{" "}
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <strong>{cart.contactNumber} </strong>{" "}
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <strong> ${cart.priceRange} Negotiable</strong>{" "}
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <Button
+                          type="button"
+                          // variant="light"
+                          onClick={() => removeFromCartHandler()}
+                        >
+                          <FaTrash
+                            className="fa-fas"
+                            style={{ color: "red", fontSize: "20px" }}
+                          >
+                            {" "}
+                          </FaTrash>
+                        </Button>
+                      </div>
+                    </div>
 
-          {/* <PersistentDrawerLeft /> */}
-          <Col md={8}>
-            <h1>Booking Cart</h1>
+                    {/* </div> */}
+                  </div>
 
-            <div></div>
-
-            {/* {change.lenght === 0 ? (
-            <Message variant="danger">Your cart is empty</Message>
-          ) : ( */}
-            <Link to="/">Go Back</Link>
-            <ListGroup variant="flush">
-              {/* {change?.map((changes: any) => ( */}
-              <ListGroup.Item>
-                <Row>
-                  <Col md={2}>
-                    {/* <Image src={item} alt="jfjhf" fluid rounded /> */}
-                  </Col>
-                  <Col md={3}>
-                    {/* {brad} */}
-                    {/* <Link to={`/vendorsDetails/${cartVendorId}`}>
-                 {cartBrandName}
-                    </Link> */}
-                  </Col>
-                  {/* <Col md={2}> &#8358;{prices}</Col> */}
-
-                  <Col>
-                    <Button
-                      type="button"
-                      variant="light"
-                      onClick={() => removeFromCartHandler()}
-                    >
-                      <FaTrash className="fa-fas"> </FaTrash>
-                    </Button>
-                  </Col>
-                </Row>
-              </ListGroup.Item>
-              {/* ))}  */}
-            </ListGroup>
-          </Col>
-          <Col md={4}>
-            <Card>
-              <ListGroup variant="flush">
-                <ListGroup.Item>
-                  <h2>
-                    Subtotal Amount ( (
-                    {/* {change.reduce((acc, changes) => acc + changes.qty, 0)}) */}
-                  </h2>
-                  &#8358; Negotiable
-                </ListGroup.Item>
-                <ListGroup.Item>
                   <Button
                     type="button"
-                    className="btn-block"
-                    // disabled={change.lenght === 0}
+                    variant="contained"
+                    className="div-btn-btn-dash"
                     onClick={checkoutHandler}
                   >
-                    Proceed to checkout
+                    Proceed To Book
                   </Button>
-                </ListGroup.Item>
-              </ListGroup>
-            </Card>
-          </Col>
-        </Row>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
       </Container>
       <Footer />
-    </div>
+    </>
   );
 };
 

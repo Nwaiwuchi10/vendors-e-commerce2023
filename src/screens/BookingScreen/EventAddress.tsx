@@ -80,7 +80,7 @@ const EventAddress: React.FC<Props> = ({ cartItems }) => {
   };
   return (
     <>
-      <TopNavbar cartItems={cartItems} />
+      {/* <TopNavbar cartItems={cartItems} /> */}
       <UserDashBoard>
         <Container>
           <Checkoutsteps step1 step2 />
@@ -95,7 +95,7 @@ const EventAddress: React.FC<Props> = ({ cartItems }) => {
             <div className="form-card">
               <div className=" card-body p-4 p-md-5">
                 <h3 className="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 d-flex justify-content-center">
-                  Registration Form
+                  Event Description Form
                 </h3>
                 <p
                   className="d-flex justify-content-center"
