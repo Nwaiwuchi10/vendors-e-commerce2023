@@ -12,7 +12,7 @@ import "../VendorsAppliForm/style.css";
 
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
-import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
 
 import { UserRegApi } from "../../Data/Api";
@@ -22,6 +22,7 @@ import CircularIndeterminate from "../../components/Loading/Progress";
 import UserDashBoard from "../../userScreen/userDashboard/userDashboard";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import axios from "axios";
 type Props = {
   // base64: (file: File | null) => void;
 };
