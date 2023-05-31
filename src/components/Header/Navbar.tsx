@@ -74,12 +74,20 @@ export default function Navbar(props: Props) {
             lineHeight: "50px",
           }}
         >
-          <ListItem>Sign In</ListItem>
-          <ListItem>Sign Up</ListItem>
           <ListItem> Market</ListItem>
           <ListItem>Become a vendor</ListItem>
           <ListItem> About Us</ListItem>
           <ListItem> Contact Us</ListItem>
+          <ListItem>
+            {" "}
+            <Link
+              style={{ color: "inherit", textDecoration: "none" }}
+              to="/login"
+            >
+              {" "}
+              Login
+            </Link>
+          </ListItem>
         </ul>
       </List>
     </Box>
@@ -117,7 +125,10 @@ export default function Navbar(props: Props) {
           </IconButton>
           <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
             <Typography variant="h6" component="div" className="now-music-sm">
-              VENDORS
+              <Link style={{ color: "inherit", textDecoration: "none" }} to="/">
+                {" "}
+                VENDORS
+              </Link>
             </Typography>
           </Link>
           <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
@@ -129,7 +140,10 @@ export default function Navbar(props: Props) {
                 display: { xs: "none", sm: "block" },
               }}
             >
-              VENDORS
+              <Link style={{ color: "inherit", textDecoration: "none" }} to="/">
+                {" "}
+                VENDORS
+              </Link>
             </Typography>
           </Link>
           <div className="category-nav">
@@ -146,15 +160,6 @@ export default function Navbar(props: Props) {
                   textAlign: "right",
                 }}
               >
-                <ListItem>
-                  <span>Sign</span>
-                  <span style={{ marginLeft: "5px" }}>In</span>
-                </ListItem>
-                <ListItem>
-                  <span>Sign</span>
-                  <span style={{ marginLeft: "5px" }}>Up</span>
-                </ListItem>
-
                 <ListItem>Market</ListItem>
                 <ListItem>
                   {" "}
@@ -171,6 +176,16 @@ export default function Navbar(props: Props) {
                   {" "}
                   <span>Contact</span>
                   <span style={{ marginLeft: "5px" }}>Us</span>
+                </ListItem>
+                <ListItem>
+                  {" "}
+                  <Link
+                    style={{ color: "inherit", textDecoration: "none" }}
+                    to="/login"
+                  >
+                    {" "}
+                    <span> Login</span>
+                  </Link>
                 </ListItem>
               </ul>
             </List>

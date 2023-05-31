@@ -20,6 +20,11 @@ export interface UserReg {
   password: String;
   confirmPassword: String;
 }
+export interface UserLogin {
+  email: String;
+
+  password: String;
+}
 export interface EvenTAddress {
   eventLocation: String;
   city: String;

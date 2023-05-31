@@ -88,10 +88,7 @@ export default function UserDashBoard(props: Props) {
   const drawer = (
     <div>
       <Toolbars />
-      <div>
-        {localStorage.getItem("firstName")}
-        {localStorage.getItem("lastName")}{" "}
-      </div>
+
       <Divider />
       <List style={{ color: "#213F7D" }}>
         {" "}

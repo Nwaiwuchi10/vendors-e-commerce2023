@@ -1,8 +1,21 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+  const Logout = () => {
+    localStorage.setItem("token", "");
+    localStorage.setItem("phoneNumber", "");
+    localStorage.setItem("lastName", "");
+    localStorage.setItem("isAdmin", "");
+    localStorage.setItem("email", "");
+    localStorage.setItem("userId", "");
+    localStorage.setItem("firstName", "");
+    localStorage.setItem("roles", "");
+    localStorage.setItem("contactAdress", "");
+    navigate("/");
+  };
   return (
     <div>
       <ul className="ul-list">
@@ -18,7 +31,10 @@ const Sidebar = () => {
               marginLeft: "5px",
             }}
           >
-            <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+            <Link
+              to="/userDashboard"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
               Dashboard
             </Link>
           </div>
@@ -41,14 +57,7 @@ const Sidebar = () => {
             display: "flex",
           }}
         >
-          <div>
-            <Link
-              to="/makeDeposit"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              My Bookings
-            </Link>{" "}
-          </div>
+          <div>My Bookings</div>
         </li>
         <li
           style={{
@@ -104,7 +113,10 @@ const Sidebar = () => {
             display: "flex",
           }}
         >
-          <div> Audit Logs</div>
+          <div style={{ cursor: "pointer" }} onClick={Logout}>
+            {" "}
+            Log Out
+          </div>
         </li>
       </ul>
     </div>

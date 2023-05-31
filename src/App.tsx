@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import HomePage from "./pages/Home/HomePage";
 
 import UserProfile from "./userScreen/userProfile/UserProfile";
@@ -16,7 +16,12 @@ import UserRegister from "./screens/UserRegisterScreen/UserRegister";
 import OrderScreen from "./screens/OrderScreen/OrderScreen";
 import TopNavbar from "./components/Header/TopNavbar";
 import PaymentCheckOut from "./screens/PaymentScreen/PaymentCheckOut";
+import UserHomePage from "./userScreen/userDashboard/userDashBoardHome/UserHomePage";
+import LoginScreen from "./screens/LoginScreen/LoginScreen";
+
 function App() {
+  const navigate = useNavigate();
+  const user = localStorage.getItem("userId");
   const [cartItems, setCartItems] = useState([] as any);
 
   const handleAddToCart = (item: any) => {
@@ -30,11 +35,20 @@ function App() {
   //     setCartItems(newCartItems);
   //   }
   // }
+  useEffect(() => {
+    if (user) {
+      navigate("/userDashboard");
+    } else {
+      navigate("/");
+    }
+  }, []);
+
   return (
     <div>
       <TopNavbar cartItems={cartItems} />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/userDashboard" element={<UserHomePage />} />
         <Route path="/productCreate" element={<UserProfile />} />
         <Route path="/vendorsUserReg" element={<VendorsRegister />} />
         <Route path="/createVendorImages" element={<VendorImageClips />} />
@@ -52,6 +66,7 @@ function App() {
           path="/register"
           element={<UserRegister step1 cartItems={cartItems} />}
         />
+        <Route path="/login" element={<LoginScreen cartItems={cartItems} />} />
         <Route
           path="/booking"
           element={<EventAddress step1 step2 cartItems={cartItems} />}
