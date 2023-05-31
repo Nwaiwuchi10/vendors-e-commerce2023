@@ -5,12 +5,13 @@ import "slick-carousel/slick/slick-theme.css";
 import Data from "../../Data/Data";
 import "./style.css";
 import { Image } from "react-bootstrap";
-import axios from "axios";
+
 import { VendorsApi } from "../../Data/Api";
 import VendorsCard from "./VendorsCard";
 import Message from "../../components/Messages/Message";
 import Loader from "../../components/Loading/Loader";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 type Props = {
   onClick?: () => any;
   addToCart?: () => void;
