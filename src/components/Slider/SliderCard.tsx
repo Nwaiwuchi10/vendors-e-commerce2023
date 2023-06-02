@@ -54,11 +54,13 @@ const SliderCard = () => {
                     <div className="left-content-slide">
                       <h1>50% Off For Vendor Of The Week</h1>
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Quis lobortis consequat eu, quam etiam at quis ut
-                        convallis.
+                        We offer discount in booking our vendors of the week,
+                        Our clients can benefit from this offer by booking our
+                        weekly vendors."
                       </p>
-                      <button className="btn-primary">Visit Collections</button>
+                      <button className="btn-primary ">
+                        Visit Collections
+                      </button>
                     </div>
                     <div className="right-img">
                       <Image

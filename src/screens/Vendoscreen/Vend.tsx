@@ -63,20 +63,6 @@ const VendorsScreen: React.FC<Props> = ({ onAddToCarts, onAddToCart }) => {
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
   };
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -95,18 +81,10 @@ const VendorsScreen: React.FC<Props> = ({ onAddToCarts, onAddToCart }) => {
     fetchPosts();
   }, []);
 
-  const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  const handleClickNext = () => {
-    setCurrentCardIndex((prevIndex) =>
-      prevIndex === data.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  // Function to handle clicking on the previous arrow
-  const handleClickPrev = () => {
-    setCurrentCardIndex((prevIndex) =>
-      prevIndex === 0 ? data.length - 1 : prevIndex - 1
-    );
+  //   const { addToCart } = props;
+  const [count, setCount] = useState(0);
+  const increment = () => {
+    setCount(count + 1);
   };
 
   return (

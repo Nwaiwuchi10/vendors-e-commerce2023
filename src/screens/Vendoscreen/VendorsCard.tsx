@@ -101,8 +101,13 @@ const VendorsCard: React.FC<Props> = ({
               {/* step : 3  
                      if hami le button ma click garryo bahne 
                     */}
-              <button onClick={handleAddToCart}>
-                <i className="fa fa-plus"></i>
+              <button>
+                <Link
+                  to={`/vendorsDetails/${productItem._id}`}
+                  style={{ color: "inherit" }}
+                >
+                  <i className="fa fa-plus"></i>
+                </Link>{" "}
               </button>
             </div>
             <div className="price">

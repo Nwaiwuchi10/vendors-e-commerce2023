@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import "./Style.css";
-import amer from "../../assets/Images/vend.jpg";
+import amer from "../../assets/Images/unn.jpg";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 interface Props {

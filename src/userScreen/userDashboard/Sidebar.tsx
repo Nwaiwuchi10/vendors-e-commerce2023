@@ -84,7 +84,14 @@ const Sidebar = () => {
             display: "flex",
           }}
         >
-          <div> Invoice</div>
+          <div>
+            <Link
+              to="/invoice"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              Invoice
+            </Link>
+          </div>
         </li>
         <li
           style={{

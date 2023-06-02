@@ -21,6 +21,7 @@ import LoginScreen from "./screens/LoginScreen/LoginScreen";
 import BeAvendor from "./pages/BeAvendor/BeAvendor";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import About from "./pages/AboutUs/About";
+import Invoice from "./screens/InvoiceScreen/Invoice";
 
 function App() {
   const navigate = useNavigate();
@@ -82,6 +83,7 @@ function App() {
           element={<OrderScreen step3 cartItems={cartItems} />}
         />
         <Route path="/payment" element={<PaymentCheckOut step4 />} />
+        <Route path="/invoice" element={<Invoice />} />
         <Route path="/vendorsclips/:id" element={<VendorImageClips />} />
       </Routes>
     </div>

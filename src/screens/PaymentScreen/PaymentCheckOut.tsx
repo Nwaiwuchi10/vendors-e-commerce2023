@@ -74,7 +74,7 @@ const PaymentCheckOut: React.FC<Props> = () => {
 
           console.log(res.data);
           toast.success("post sucessful");
-          navigate("/userDashboard");
+          navigate("/invoice");
         } else {
           toast.error(res.data.error);
         }

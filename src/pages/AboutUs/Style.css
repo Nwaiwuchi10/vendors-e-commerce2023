@@ -44,7 +44,7 @@
   display: block;
 }
 .active-tab {
-  background: blue;
+  background: rgb(0, 119, 255);
   position: relative;
 }
 .active-tab::before {
@@ -142,14 +142,14 @@
   .about {
     padding: 2rem 1rem 3rem 1rem;
   }
-  .row {
+  .rows {
     display: flex;
     flex-direction: column;
   }
   .about-img {
     height: 500px;
   }
-  .row .column {
+  .rows .column {
     width: 100%;
   }
   .tabs {
