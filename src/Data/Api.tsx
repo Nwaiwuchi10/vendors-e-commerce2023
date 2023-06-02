@@ -1,6 +1,9 @@
-export const VendorsApi = "http://localhost:5000/api/vendors/data";
-export const VendorsDataApi = "http://localhost:5000/api/vendors/";
-export const UserRegApi = "http://localhost:5000/api/auth/registers/";
-export const UserLoginApi = "http://localhost:5000/api/auth/login/";
-export const PaymentApi = "http://localhost:5000/api/payment/";
-export const OrderApi = "http://localhost:5000/api/order/";
+export const VendorsApi =
+  "https://ecommerce-5hlm.onrender.com/api/vendors/data";
+export const VendorsDataApi =
+  "https://ecommerce-5hlm.onrender.com/api/vendors/";
+export const UserRegApi = "https://ecommerce-5hlm.onrender.com/auth/registers/";
+export const UserLoginApi =
+  "https://ecommerce-5hlm.onrender.com/api/auth/login/";
+export const PaymentApi = "https://ecommerce-5hlm.onrender.com/api/payment/";
+export const OrderApi = "https://ecommerce-5hlm.onrender.com/api/order/";

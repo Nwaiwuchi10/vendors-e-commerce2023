@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 
 import { UserRegApi } from "../../Data/Api";
 
-import pple from "../../assets/Images/pple.jpg";
+import pple from "../../assets/Images/tt.jpg";
 import CircularIndeterminate from "../../components/Loading/Progress";
 import UserDashBoard from "../../userScreen/userDashboard/userDashboard";
 import Visibility from "@mui/icons-material/Visibility";

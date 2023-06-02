@@ -74,10 +74,30 @@ export default function Navbar(props: Props) {
             lineHeight: "50px",
           }}
         >
-          <ListItem> Market</ListItem>
-          <ListItem>Become a vendor</ListItem>
-          <ListItem> About Us</ListItem>
-          <ListItem> Contact Us</ListItem>
+          <ListItem>
+            <Link to="/cart" style={{ color: "inherit" }}>
+              {" "}
+              Market
+            </Link>
+          </ListItem>
+          <ListItem>
+            {" "}
+            <Link style={{ color: "inherit" }} to="/beavendor">
+              Become a vendor
+            </Link>
+          </ListItem>
+          <ListItem>
+            {" "}
+            <Link to="/aboutus" style={{ color: "inherit" }}>
+              About Us
+            </Link>
+          </ListItem>
+          <ListItem>
+            {" "}
+            <Link to="/contactus" style={{ color: "inherit" }}>
+              Contact Us
+            </Link>
+          </ListItem>
           <ListItem>
             {" "}
             <Link
@@ -160,22 +180,32 @@ export default function Navbar(props: Props) {
                   textAlign: "right",
                 }}
               >
-                <ListItem>Market</ListItem>
                 <ListItem>
-                  {" "}
-                  <span>Become</span>
-                  <span style={{ marginLeft: "5px" }}>a</span>
-                  <span style={{ marginLeft: "5px" }}>vendor</span>
+                  <Link to="/cart" style={{ color: "inherit" }}>
+                    {" "}
+                    Market
+                  </Link>
                 </ListItem>
                 <ListItem>
-                  {" "}
-                  <span>About</span>
-                  <span style={{ marginLeft: "5px" }}>Us</span>
+                  <Link style={{ color: "inherit" }} to="/beavendor">
+                    <span>Become</span>
+                    <span style={{ marginLeft: "5px" }}>a</span>
+                    <span style={{ marginLeft: "5px" }}>vendor</span>
+                  </Link>
                 </ListItem>
                 <ListItem>
-                  {" "}
-                  <span>Contact</span>
-                  <span style={{ marginLeft: "5px" }}>Us</span>
+                  <Link to="/aboutus" style={{ color: "inherit" }}>
+                    {" "}
+                    <span>About</span>
+                    <span style={{ marginLeft: "5px" }}>Us</span>
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link to="/contactus" style={{ color: "inherit" }}>
+                    {" "}
+                    <span>Contact</span>
+                    <span style={{ marginLeft: "5px" }}>Us</span>
+                  </Link>
                 </ListItem>
                 <ListItem>
                   {" "}

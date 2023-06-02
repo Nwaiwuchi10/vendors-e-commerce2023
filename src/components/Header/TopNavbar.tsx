@@ -192,7 +192,7 @@ export default function TopNavbar({ cartItems }: Props) {
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            MUI
+            EVENT
           </Typography>
           <Search>
             <SearchIconWrapper>

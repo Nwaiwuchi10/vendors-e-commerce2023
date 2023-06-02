@@ -90,21 +90,30 @@ export default function CategoryMenu() {
         onClose={handleClose}
       >
         <MenuItem onClick={handleClose} disableRipple>
-          <EditIcon />
-          Edit
+          {/* <EditIcon /> */}
+          Decorators
         </MenuItem>
         <MenuItem onClick={handleClose} disableRipple>
-          <FileCopyIcon />
-          Duplicate
+          Bridal Gown & Outfit Vendors
+        </MenuItem>
+        <MenuItem onClick={handleClose} disableRipple>
+          Bouncers
         </MenuItem>
         <Divider sx={{ my: 0.5 }} />
         <MenuItem onClick={handleClose} disableRipple>
-          <ArchiveIcon />
-          Archive
+          MCs
         </MenuItem>
         <MenuItem onClick={handleClose} disableRipple>
-          <MoreHorizIcon />
-          More
+          DJs
+        </MenuItem>
+        <MenuItem onClick={handleClose} disableRipple>
+          Live Band
+        </MenuItem>
+        <MenuItem onClick={handleClose} disableRipple>
+          Caterers
+        </MenuItem>
+        <MenuItem onClick={handleClose} disableRipple>
+          Camera & Video Man
         </MenuItem>
       </StyledMenu>
     </div>

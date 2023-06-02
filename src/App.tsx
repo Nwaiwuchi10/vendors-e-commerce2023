@@ -18,6 +18,9 @@ import TopNavbar from "./components/Header/TopNavbar";
 import PaymentCheckOut from "./screens/PaymentScreen/PaymentCheckOut";
 import UserHomePage from "./userScreen/userDashboard/userDashBoardHome/UserHomePage";
 import LoginScreen from "./screens/LoginScreen/LoginScreen";
+import BeAvendor from "./pages/BeAvendor/BeAvendor";
+import ContactUs from "./pages/ContactUs/ContactUs";
+import About from "./pages/AboutUs/About";
 
 function App() {
   const navigate = useNavigate();
@@ -49,6 +52,9 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/userDashboard" element={<UserHomePage />} />
+        <Route path="/beavendor" element={<BeAvendor />} />
+        <Route path="/contactus" element={<ContactUs />} />
+        <Route path="/aboutus" element={<About />} />
         <Route path="/productCreate" element={<UserProfile />} />
         <Route path="/vendorsUserReg" element={<VendorsRegister />} />
         <Route path="/createVendorImages" element={<VendorImageClips />} />

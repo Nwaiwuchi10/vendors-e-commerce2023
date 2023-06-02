@@ -37,7 +37,7 @@ const VendorsDetails: React.FC<Props> = ({
   useEffect(() => {
     const fetchPosts = async () => {
       const { data } = await axios.get(
-        `http://localhost:5000/api/vendors/${id}`
+        `https://ecommerce-5hlm.onrender.com/api/vendors/${id}`
       );
       console.log(data);
       setVendor(data);

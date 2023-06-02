@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import UserDashBoard from "../../userScreen/userDashboard/userDashboard";
 import { VendorsApi } from "../../Data/Api";
 import { Vendors } from "../../Data/Data.Type";
-import vend from "../../assets/Images/vend.jpg";
+import vend from "../../assets/Images/tt.jpg";
 import CircularIndeterminate from "../../components/Loading/Progress";
 type Props = {
   // base64: (file: File | null) => void;
